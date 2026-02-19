@@ -27,3 +27,4 @@ dist-ssr
 # OpenTofu
 .terraform
 .terraform.lock.hcl
+terraform.tfstate
