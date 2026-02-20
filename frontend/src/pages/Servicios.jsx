@@ -65,6 +65,7 @@ export default function Servicios() {
             <li>Coordinación con otros gremios si es necesario</li>
           </ul>
         </div>
+
       </section>
 
       {/* Cómo trabajamos */}
