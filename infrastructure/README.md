@@ -150,9 +150,9 @@ $ aws --version
     $ tofu destroy
     ```
 
-## AWS Infrastructure
+## AWS Infrastructure Resources
 
-AWS Shield -> Amazon CloudFront -> AWS S3
+> AWS Shield > Amazon CloudFront > AWS S3
 
 - AWS S3 is a storage service that serves and stores the static files from the web.
 
