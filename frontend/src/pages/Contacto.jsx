@@ -39,7 +39,7 @@ export default function Contacto() {
             <li><strong>WhatsApp:</strong> <a href={waHref} target="_blank" rel="noopener noreferrer">Escríbeme</a></li>
             <li><strong>Email:</strong> <a href="mailto:contacto@lucho.com">contacto@lucho.com</a></li>
             <li><strong>Zona:</strong> Madrid y alrededores</li>
-            <li><strong>Horario:</strong> Lun–Vie 8:00–20:00 (Urgencias según disponibilidad)</li>
+            <li><strong>Horario:</strong> Lun–Vie 9:00–20:00 (Urgencias según disponibilidad)</li>
           </ul>
 
           <a className="button" href={waHref} target="_blank" rel="noopener noreferrer">
