@@ -2,8 +2,6 @@
 
 This project is designed to provision AWS resources using OpenTofu, a fork of Terraform.
 
-AWS Shield -> Amazon Cloud Front -> AWS S3
-
 ## Project Structure
 
 - **main.tf**: Contains the main configuration for the AWS resources.
@@ -151,4 +149,15 @@ $ aws --version
     ```console
     $ tofu destroy
     ```
+
+## AWS Infrastructure
+
+AWS Shield -> Amazon CloudFront -> AWS S3
+
+- AWS S3 is a storage service that serves and stores the static files from the web.
+
+- Amazon CloudFront is a Content Delivery Network (CDN) that serves globally the S3 static files reducing latency, elasticity and offering protection against several cyber attacks. It offers DDoS protection thanks to AWS Shield Free Tier plan, its Global Edge Network which handles traffic spikes and distributes the load, implements rate limiting with AWS WAF (if enabled with additional costs) and origin protection.
+
+- AWS Shield is a protection layer against several cyber attacks. AWS Shield Free Tier plan is enabled by default in all AWS Accounts.
+
 
