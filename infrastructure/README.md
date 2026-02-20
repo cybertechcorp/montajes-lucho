@@ -161,3 +161,8 @@ $ aws --version
 - AWS Shield is a protection layer against several cyber attacks. AWS Shield Free Tier plan is enabled by default in all AWS Accounts.
 
 \* More on DDoS Protection on AWS with AWS Shield and AWS WAF | Amazon Web Services: https://www.youtube.com/watch?v=-9YzrRCzaKM
+
+\* Key Management Service (KMS) Charges: https://repost.aws/knowledge-center/kms-key-charges
+\* Unused Resources on the Bill: https://repost.aws/questions/QUtjF5iu1nTcqFlIfauh4Ppw/i-am-being-charged-for-resources-that-i-am-not-using-and-i-have-not-even-created-them
+
+
