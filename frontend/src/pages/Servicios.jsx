@@ -23,7 +23,7 @@ export default function Servicios() {
             <li>Armarios, cómodas, mesas, sillas, sofás</li>
             <li>Montaje, ajuste y anclajes de seguridad</li>
             <li>Retirada de embalajes</li>
-            <li>Camas, literas</li>
+            <li>Camas y literas</li>
           </ul>
         </div>
 
