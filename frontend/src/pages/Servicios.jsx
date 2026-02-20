@@ -65,22 +65,6 @@ export default function Servicios() {
           </ul>
         </div>
 
-        <div className="service-card">
-          <h2>Transporte</h2>
-          <p>
-            Traslado y entrega cuidadosa con protección y sujeción de carga, ideal para compras,
-            mudanzas pequeñas y movimientos entre estancias.
-          </p>
-          <ul className="bullets">
-            <li>Mantas, cinchas y protección</li>
-            <li>Ayuda de carga y descarga</li>
-            <li>Rutas locales y regionales</li>
-          </ul>
-
-          <a className="button ghost" href="/catalogo.pdf" target="_blank" rel="noopener noreferrer">
-            Descargar catálogo (PDF)
-          </a>
-        </div>
       </section>
 
       {/* Cómo trabajamos */}
