@@ -1,7 +1,9 @@
+# Create S3 bucket
 resource "aws_s3_bucket" "frontend" {
   bucket = "frontend-montajes-lucho"
 }
 
+# Block public access to the bucket
 resource "aws_s3_bucket_public_access_block" "frontend" {
   bucket = aws_s3_bucket.frontend.id
 
@@ -11,6 +13,7 @@ resource "aws_s3_bucket_public_access_block" "frontend" {
   restrict_public_buckets = true
 }
 
+# Create bucket policy to allow CloudFront access
 resource "aws_s3_bucket_policy" "frontend_policy" {
   bucket = aws_s3_bucket.frontend.id
 
@@ -34,6 +37,7 @@ resource "aws_s3_bucket_policy" "frontend_policy" {
   })
 }
 
+# Creates CloudFront Origin Access Control (OAC) for secure CloudFront-to-S3 communication
 resource "aws_cloudfront_origin_access_control" "oac" {
   name                              = "frontend-oac"
   description                       = "OAC for React frontend"
@@ -42,6 +46,7 @@ resource "aws_cloudfront_origin_access_control" "oac" {
   signing_protocol                  = "sigv4"
 }
 
+# Sets up CloudFront distribution to serve content from the S3 bucket with caching and HTTPS  
 resource "aws_cloudfront_distribution" "frontend" {
   enabled             = true
   default_root_object = "index.html"
