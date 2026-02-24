@@ -5,16 +5,17 @@ export default function Servicios() {
     <article className="section">
       <header className="page-header">
         <h1>Servicios profesionales</h1>
-        <p className="lead">
-          Montaje experto de muebles, estanterías, lámparas, ventiladores y cocinas, además de
-          transporte seguro en Madrid y alrededores. Puntualidad, cuidado y resultados impecables.
-        </p>
       </header>
 
       {/* Bloques por categorías */}
       <section className="service-groups">
         <div className="service-card">
           <h2>Montaje de muebles</h2>
+          <img 
+            src="/img/Montaje_muebles.jpeg"
+            alt="Montaje de muebles"
+            className="service-img"
+          />
           <p>
             Montaje preciso de mobiliario de hogar y oficina (IKEA y otras marcas), fijación a pared
             cuando es necesario, nivelado y remates limpios.
@@ -29,6 +30,11 @@ export default function Servicios() {
 
         <div className="service-card">
           <h2>Estanterías</h2>
+          <img 
+            src="/img/estanterias.jpeg"
+            alt="Montaje de muebles"
+            className="service-img"
+          />
           <p>
             Instalación y fijación de estanterías decorativas y de carga ligera, alineadas y seguras.
           </p>
@@ -41,6 +47,11 @@ export default function Servicios() {
 
         <div className="service-card">
           <h2>Lámparas y ventiladores</h2>
+          <img 
+            src="/img/lamparas.jpeg"
+            alt="Montaje de muebles"
+            className="service-img"
+          />
           <p>
             Instalación eléctrica básica (sustitución de luminarias, conexión a punto existente) y
             montaje de ventiladores de techo con equilibrio.
@@ -55,6 +66,11 @@ export default function Servicios() {
 
         <div className="service-card">
           <h2>Cocinas</h2>
+          <img 
+            src="/img/cocina.jpeg"
+            alt="Montaje de muebles"
+            className="service-img"
+          />
           <p>
             Montaje de módulos, encajes, zócalos y herrajes; ajustes finos de puertas y cajones,
             encimeras pre-cortadas y remates estéticos.
@@ -100,18 +116,6 @@ export default function Servicios() {
             desc="Trabajo seguro y fijaciones adecuadas al tipo de pared y peso." />
         </div>
       </section>
-
-      {/* Reseñas / TaskRabbit */}
-      <section className="reviews">
-        <h2>Opiniones de clientes</h2>
-        <div className="quotes">
-          <blockquote>“Rápido, profesional y muy cuidadoso.” — Ana G.</blockquote>
-          <blockquote>“Montó la cocina con precisión y dejó todo limpio.” — Jorge R.</blockquote>
-          <blockquote>“100% recomendable. Serio y puntual.” — Usuario TaskRabbit</blockquote>
-        </div>
-        <p className="muted">Trabajamos también a través de TaskRabbit.</p>
-      </section>
-
       {/* CTA */}
       <section className="cta">
         <h3>¿Empezamos?</h3>

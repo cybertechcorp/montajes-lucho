@@ -1,3 +1,4 @@
+import Resenas from "../pages/Resenas"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "../components/Header";
 import WhatsAppButton from "../components/WhatsAppButton";
@@ -14,6 +15,7 @@ export default function AppRouter() {
         <Route path="/" element={<Home />} />
         <Route path="/servicios" element={<Servicios />} />
         <Route path="/contacto" element={<Contacto />} />
+        <Route path="/resenas" element={<Resenas />} />
       </Routes>
     </BrowserRouter>
   );
