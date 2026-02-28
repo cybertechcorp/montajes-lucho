@@ -1,0 +1,46 @@
+name: Deploy Frontend
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: ./frontend
+
+      - name: Build React app
+        run: npm run build
+        working-directory: ./frontend
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::543634431649:role/pipeline-oidc-role
+          aws-region: eu-west-1
+
+      - name: Sync to S3
+        run: aws s3 sync ./frontend/dist s3://frontend-montajes-lucho --delete
+
+      - name: Invalidate CloudFront cache
+        run: |
+          aws cloudfront create-invalidation \
+            --distribution-id E281E6F9TYIJHW \
+            --paths "/*"
