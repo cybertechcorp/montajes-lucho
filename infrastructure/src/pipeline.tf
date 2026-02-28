@@ -12,20 +12,23 @@ resource "aws_iam_role" "pipeline_oidc" {
   assume_role_policy = jsonencode({
     Version = "2012-10-17"
     Statement = [
-      {
+        {
         Effect = "Allow"
         Principal = {
-          Federated = aws_iam_openid_connect_provider.github.arn
+            Federated = aws_iam_openid_connect_provider.github.arn
         }
         Action = "sts:AssumeRoleWithWebIdentity"
         Condition = {
-          StringLike = {
-            "token.actions.githubusercontent.com:sub" = "repo:cybertechcorp/montajes-lucho:ref:refs/heads/*"
-          }
+            StringLike = {
+            "token.actions.githubusercontent.com:sub" = [
+                "repo:cybertechcorp/montajes-lucho:ref:refs/heads/*",
+                "repo:cybertechcorp/montajes-lucho:environment:production"
+            ]
+            }
         }
-      }
+        }
     ]
-  })
+})
 }
 
 # Attach policy for S3 and CloudFront deployment (adjust as needed)
