@@ -7,10 +7,10 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="hero">
         <div className="hero-content">
-          <h1>Montajes Lucho</h1>
+          <h1>Montaje profesional para tu hogar</h1>
           <p className="subtitle">
-            Especialistas en montaje de muebles, instalación de estanterías, lámparas, ventiladores,
-            cocinas y servicios de transporte profesional en Madrid y alrededores.
+            Especialistas en montaje de muebles, instalación de lámparas, ventiladores y 
+            cocinas.
           </p>
 
           <div className="hero-buttons">

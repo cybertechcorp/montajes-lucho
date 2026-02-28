@@ -21,15 +21,16 @@ body {
 
 .menu a {
   margin-left: 20px;
-  color: white;
+  color: rgb(255, 255, 255);
   text-decoration: none;
   font-weight: bold;
 }
 
 /* Secciones */
 .section {
-  width: 90%;
-  margin: 40px auto;
+  background: #000000;
+  color: #ffffff;
+  width: 100%;
 }
 
 .button {
@@ -74,8 +75,8 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 60px 10%;
-  background: linear-gradient(to right, #0f172a, #1e293b);
-  color: white;
+  background: #ffffff; /*fondo blanco */
+  color: #000000; /*texto negro*/
 }
 
 .hero-content {
@@ -139,7 +140,8 @@ body {
 /* BENEFICIOS */
 .beneficios {
   padding: 60px 10%;
-  background: #f8fafc;
+  background: #000000;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -152,10 +154,13 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 25px;
+  justify-content: center; /*centra las dos ultimas tarjetas*/
+  max-width: 1100px;
+  margin: 0 auto; 
 }
 
 .beneficio-card {
-  background: white;
+  background: #c1c1c1;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 3px 10px rgba(0,0,0,0.1);
@@ -169,27 +174,41 @@ body {
 
 
 /* Encabezados de página */
-.page-header { max-width: 900px; margin: 0 auto 28px auto; text-align: center; }
-.page-header .lead { color: #475569; }
+.page-header { 
+  max-width: 900px; 
+  margin: 0 auto 28px auto; 
+  text-align: center; 
+}
+.page-header h1{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+
+
+}
+.page-header .lead { 
+  color: #ffffff; 
+}
 
 /* Tarjetas de servicios */
 .service-groups {
+  background: #000000;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 22px;
   margin-top: 22px;
 }
 .service-card {
-  background: #fff;
+  background: #7e7e7e;
+  color: #000000;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
   padding: 18px 18px 22px;
   box-shadow: 0 2px 10px rgba(15, 23, 42, 0.05);
 }
-.service-card h2 { margin: 6px 0 6px; }
+.service-card h2 { margin: 6px 0 6px; color: #ffffff; }
 .bullets { margin: 10px 0 0; padding-left: 18px; }
 .bullets li { margin: 6px 0; }
-.note { color: #64748b; display: inline-block; margin-top: 8px; }
+.note { color: #242424; display: inline-block; margin-top: 8px; }
 
 /* Cómo trabajamos */
 .how-we-work { margin-top: 40px; }
@@ -199,20 +218,22 @@ body {
   margin-top: 14px;
 }
 .step {
-  background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;
+  background: #8b8b8b; border: 1px solid #737373; border-radius: 12px; padding: 16px; color: #000000;
 }
 .step-num {
-  background: #2563eb; color: #fff; font-weight: 700;
+  background: #2563eb; color: #ffffff; font-weight: 700;
   border-radius: 999px; width: 28px; height: 28px; display: inline-flex;
   align-items: center; justify-content: center; margin-bottom: 8px;
 }
 .features {
-  display: grid; gap: 14px; margin-top: 16px;
+  display: grid; 
+  gap: 14px; 
+  margin-top: 16px;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
 }
 
-.feature-icon { display: flex; gap: 12px; align-items: flex-start; background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 14px; }
-.feature-emoji { font-size: 1.4rem; }
+.feature-icon { display: flex; gap: 12px; align-items: flex-start; background: #8d8c8c; border: 1px solid #737373; border-radius: 12px; padding: 14px; }
+.feature-emoji { font-size: 1.4rem; }   
 
 /* Reseñas */
 .reviews { margin-top: 38px; text-align: center; }
@@ -222,7 +243,7 @@ body {
 /* CTA final */
 .cta {
   margin-top: 38px; padding: 28px; text-align: center;
-  background: linear-gradient(90deg, #0f172a, #1e293b); color: #fff; border-radius: 12px;
+  background: linear-gradient(90deg, #0f172a, #1e293b); color: #ffffff; border-radius: 12px;
 }
 .cta .button { background: #2563eb; border: none; }
 
@@ -268,3 +289,11 @@ body {
   padding: 12px 0; font-weight: 700; display: flex; justify-content: space-between; cursor: pointer;
 }
 .faq-a { padding: 0 0 12px; color: #475569; }
+
+.service-img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: 10px 0 20px 0;
+}
