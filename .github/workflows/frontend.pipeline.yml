@@ -16,9 +16,10 @@ env:
   CLOUDFRONT_DIST_ID: E281E6F9TYIJHW
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
-
+    outputs:
+      build-path: ${{ steps.build.outputs.build-path }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -35,6 +36,26 @@ jobs:
       - name: Build React app
         run: npm run build
         working-directory: ./frontend
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dist
+          path: ./frontend/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: production
+      # This will require manual approval if you set up the environment in GitHub
+      # and enable "Required reviewers" for it.
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: frontend-dist
+          path: ./frontend/dist
 
       - name: Configure AWS credentials (OIDC)
         uses: aws-actions/configure-aws-credentials@v4
