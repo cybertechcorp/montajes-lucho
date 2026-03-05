@@ -3,6 +3,10 @@ resource "aws_s3_bucket" "frontend" {
   bucket = "frontend-montajes-lucho"
 }
 
+resource "aws_s3_bucket" "frontend" {
+  bucket = "testbuckettestbucket"
+}
+
 # Block public access to the bucket
 resource "aws_s3_bucket_public_access_block" "frontend" {
   bucket = aws_s3_bucket.frontend.id
