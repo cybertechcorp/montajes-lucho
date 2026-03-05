@@ -75,5 +75,5 @@ jobs:
         working-directory: ${{ env.OPENTOFU_WORKING_DIR }}
 
       - name: Apply
-        run: tofu apply "${{ env.OPENTOFU_PLAN_FILE }}" -auto-approve
+        run: tofu apply -auto-approve "${{ env.OPENTOFU_PLAN_FILE }}" 
         working-directory: ${{ env.OPENTOFU_WORKING_DIR }}
