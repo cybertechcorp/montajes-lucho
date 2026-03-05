@@ -4,7 +4,7 @@ resource "aws_s3_bucket" "frontend" {
 }
 
 # Test bucket
-resource "aws_s3_bucket" "frontend" {
+resource "aws_s3_bucket" "testbucket" {
   bucket = "testbuckettestbucket"
 }
 
