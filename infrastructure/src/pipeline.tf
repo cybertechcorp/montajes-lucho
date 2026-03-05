@@ -59,6 +59,29 @@ resource "aws_iam_role_policy" "pipeline_oidc_policy" {
           "cloudfront:CreateInvalidation"
         ]
         Resource = aws_cloudfront_distribution.frontend.arn
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "dynamodb:GetItem",
+          "dynamodb:PutItem",
+          "dynamodb:DeleteItem",
+          "dynamodb:DescribeTable"
+        ]
+        Resource = "arn:aws:dynamodb:${var.aws_region}:*:table/${var.opentofu_lock_dynamodb_table_name}"
+      },
+      {
+        Effect = "Allow"
+        Action = [
+          "s3:GetObject",
+          "s3:PutObject",
+          "s3:DeleteObject",
+          "s3:ListBucket"
+        ]
+        Resource = [
+          "arn:aws:s3:::${var.opentofu_state_s3_bucket_name}",
+          "arn:aws:s3:::${var.opentofu_state_s3_bucket_name}/*"
+        ]
       }
     ]
   })
