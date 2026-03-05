@@ -56,7 +56,7 @@ $ aws --version
 > Secret access key: Aq8wb2...
 > local.infrastruture.pipeline
 
-## Instructions
+## Instructions: Local OpenTofu
 
 1. Clone the repository:
 
@@ -98,25 +98,40 @@ $ aws --version
 
 5. Plan
 
+    Recommended Approach: Makes the plan using "prod.tfvars" variables and saves the plan to use it later on the apply stage.
+
+    ```console
+    $ tofu plan -var-file="prod.tfvars" -out="prod.tfplan"
+    ```
+
+    Other plan commands:
+
     ```console
     $ tofu plan
+    $ tofu plan -var-file="prod.tfvars"
     ```
+    
 
 6. Apply
 
+    Recommended Approach: More reliable approach since OpenTofu applies an existing plan already validated during the plan stage. 
+
     ```console
-    $ tofu apply
+    $ tofu apply -var-file="prod.tfvars"
 
-    ...
-
-    Apply complete! Resources: 5 added, 0 changed, 0 destroyed.     
-
-    Outputs:
-
-    cloudfront_url = "d3p8htm6l8mc4s.cloudfront.net"
+        Apply complete! Resources: 5 added, 0 changed, 0 destroyed.     
+        Outputs:
+        cloudfront_url = "d3p8htm6l8mc4s.cloudfront.net"
     ```
 
-7. 
+    Other apply commands
+
+    ```console
+    $ tofu apply
+    $ tofu apply "prod.tfplan"
+    ```
+
+7. Verify OpenTofu AWS Infrastructure
 
     ```console
     $ tofu state list
@@ -148,6 +163,119 @@ $ aws --version
 
     ```console
     $ tofu destroy
+    ```
+
+## Instructions: Remote OpenTofu
+
+To enable remote state management with OpenTofu, you must first create the infrastructure required to store the state remotely.
+
+This project uses the standard AWS backend pattern:
+- S3 Bucket: Stores the OpenTofu state file.
+- DynamoDB Table: Provides state locking to prevent multiple users or pipelines from applying changes simultaneously.
+
+State locking ensures that only one OpenTofu operation runs at a time, preventing state corruption.
+
+1. Create the Backend Infrastructure using **bootstrap.tf** file and the following
+
+    ```terraform
+    resource "aws_s3_bucket" "opentofu_state" {
+        bucket = var.opentofu_state_s3_bucket_name
+
+        lifecycle {
+            prevent_destroy = true
+        }
+    }
+
+    resource "aws_s3_bucket_versioning" "state_versioning" {
+        bucket = aws_s3_bucket.opentofu_state.id
+
+        versioning_configuration {
+            status = "Enabled"
+        }
+    }
+
+    resource "aws_s3_bucket_server_side_encryption_configuration" "state_encryption" {
+        bucket = aws_s3_bucket.opentofu_state.id
+
+        rule {
+            apply_server_side_encryption_by_default {
+            sse_algorithm = "AES256"
+            }
+        }
+    }
+
+    resource "aws_s3_bucket_public_access_block" "block_public_access" {
+        bucket = aws_s3_bucket.opentofu_state.id
+
+        block_public_acls   = true
+        block_public_policy = true
+        ignore_public_acls  = true
+        restrict_public_buckets = true
+    }
+
+    resource "aws_dynamodb_table" "opentofu_locks" {
+        name         = var.opentofu_lock_dynamodb_table_name
+        billing_mode = "PAY_PER_REQUEST"
+        hash_key     = "LockID"
+
+        attribute {
+            name = "LockID"
+            type = "S"
+        }
+    }
+    ```
+
+2.  Once the resources are created, configure the OpenTofu backend. Uncomment or add the OpenTofu backend to **backend.tf**.
+
+    ```terraform
+    terraform {
+        backend "s3" {
+            bucket         = var.opentofu_state_s3_bucket_name
+            key            = "infra/terraform.tfstate"
+            region         = var.aws_region
+            dynamodb_table = var.opentofu_lock_dynamodb_table_name
+            encrypt        = true
+        }
+    }
+    ```
+
+3. Then reinitialize OpenTofu state. If a local state file exists, OpenTofu will prompt you to migrate the state to the remote backend. Migrate your current infastructure to preserve your resources.
+
+    ```console
+    $ tofu init -var-file="prod.tfvars" -migrate-state
+
+        Initializing the backend...
+        Do you want to copy existing state to the new backend?
+        Pre-existing state was found while migrating the previous "local" backend to the
+        newly configured "s3" backend. No existing state was found in the newly
+        configured "s3" backend. Do you want to copy this state to the new "s3"
+        backend? Enter "yes" to copy and "no" to start with an empty state.
+
+        Enter a value: yes
+
+        Successfully configured the backend "s3"! OpenTofu will automatically
+        use this backend unless the backend configuration changes.
+
+        Initializing provider plugins...
+        - Reusing previous version of hashicorp/aws from the dependency lock file
+        - Using previously-installed hashicorp/aws v6.0.0
+
+        OpenTofu has been successfully initialized!
+
+        You may now begin working with OpenTofu. Try running "tofu plan" to see
+        any changes that are required for your infrastructure. All OpenTofu commands
+        should now work.
+
+        If you ever set or change modules or backend configuration for OpenTofu,
+        rerun this command to reinitialize your working directory. If you forget, other
+        commands will detect it and remind you to do so if necessary.
+    ```
+
+4. The next time you make a plan or apply new changes OpenTofu will use your remote backend. 
+
+    ```console
+    tofu plan -var-file="prod.tfvars" -out=prod.tfplan
+    tofu apply prod.tfplan
     ```
 
 ## AWS Infrastructure Resources
