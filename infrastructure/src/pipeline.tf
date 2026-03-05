@@ -28,10 +28,16 @@ resource "aws_iam_role" "pipeline_oidc" {
         }
         }
     ]
-})
+  })
 }
 
-# Attach policy for S3 and CloudFront deployment (adjust as needed)
+# Infrastructure Pipeline: Attach AdministratorAccess for full control over resources 
+resource "aws_iam_role_policy_attachment" "pipeline_admin" {
+  role       = aws_iam_role.pipeline_oidc.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
+# Frontend Pipeline: Attach policy for S3 and CloudFront
 resource "aws_iam_role_policy" "pipeline_oidc_policy" {
   name = "pipeline-oidc-policy"
   role = aws_iam_role.pipeline_oidc.id
@@ -59,32 +65,6 @@ resource "aws_iam_role_policy" "pipeline_oidc_policy" {
           "cloudfront:CreateInvalidation"
         ]
         Resource = aws_cloudfront_distribution.frontend.arn
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "dynamodb:GetItem",
-          "dynamodb:PutItem",
-          "dynamodb:DeleteItem",
-          "dynamodb:DescribeTable"
-        ]
-        Resource = "arn:aws:dynamodb:${var.aws_region}:*:table/${var.opentofu_lock_dynamodb_table_name}"
-      },
-      {
-        Effect = "Allow"
-        Action = [
-          "s3:PutObject",
-          "s3:PutObjectAcl",
-          "s3:GetObject",
-          "s3:ListBucket",
-          "s3:DeleteObject",
-          "s3:HeadObject",
-          "s3:GetBucketLocation"
-        ]
-        Resource = [
-          "arn:aws:s3:::${var.opentofu_state_s3_bucket_name}",
-          "arn:aws:s3:::${var.opentofu_state_s3_bucket_name}/*"
-        ]
       }
     ]
   })
