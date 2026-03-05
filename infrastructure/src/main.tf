@@ -3,6 +3,8 @@ resource "aws_s3_bucket" "frontend" {
   bucket = "frontend-montajes-lucho"
 }
 
+
+
 resource "aws_s3_bucket" "frontend" {
   bucket = "testbuckettestbucket"
 }
