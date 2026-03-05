@@ -36,7 +36,7 @@ jobs:
         uses: opentofu/setup-opentofu@v1
 
       - name: Init
-        run: tofu init
+        run: tofu init -var-file="${{ env.OPENTOFU_ENVIRONMENT_FILE }}"
         working-directory: ${{ env.OPENTOFU_WORKING_DIR }}
 
       - name: Validate
@@ -71,7 +71,7 @@ jobs:
         uses: opentofu/setup-opentofu@v1
 
       - name: Init
-        run: tofu init
+        run: tofu init -var-file="${{ env.OPENTOFU_ENVIRONMENT_FILE }}"
         working-directory: ${{ env.OPENTOFU_WORKING_DIR }}
 
       - name: Apply
