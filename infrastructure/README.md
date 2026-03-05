@@ -76,7 +76,7 @@ $ aws --version
     $ aws configure
     AWS Access Key ID [****************RKCT]: AKIAX5EZDD2QXNBO5I5V
     AWS Secret Access Key [****************jYx6]: ...
-    Default region name [eu-west-1]: eu-north-1                              
+    Default region name [eu-north-1]: eu-north-1                              
     Default output format [None]: json
     ```
 
@@ -117,7 +117,7 @@ $ aws --version
     Recommended Approach: More reliable approach since OpenTofu applies an existing plan already validated during the plan stage. 
 
     ```console
-    $ tofu apply -var-file="prod.tfvars"
+    $ tofu apply "prod.tfplan"
 
         Apply complete! Resources: 5 added, 0 changed, 0 destroyed.     
         Outputs:
@@ -128,7 +128,7 @@ $ aws --version
 
     ```console
     $ tofu apply
-    $ tofu apply "prod.tfplan"
+    $ tofu apply -var-file="prod.tfvars"
     ```
 
 7. Verify OpenTofu AWS Infrastructure
@@ -274,8 +274,8 @@ State locking ensures that only one OpenTofu operation runs at a time, preventin
 4. The next time you make a plan or apply new changes OpenTofu will use your remote backend. 
 
     ```console
-    tofu plan -var-file="prod.tfvars" -out=prod.tfplan
-    tofu apply prod.tfplan
+    tofu plan -var-file="prod.tfvars" -out="prod.tfplan"
+    tofu apply "prod.tfplan"
     ```
 
 ## AWS Infrastructure Resources
