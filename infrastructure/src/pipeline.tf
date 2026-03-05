@@ -78,6 +78,7 @@ resource "aws_iam_role_policy" "pipeline_oidc_policy" {
           "s3:GetObject",
           "s3:ListBucket",
           "s3:DeleteObject",
+          "s3:HeadObject",
           "s3:GetBucketLocation"
         ]
         Resource = [
