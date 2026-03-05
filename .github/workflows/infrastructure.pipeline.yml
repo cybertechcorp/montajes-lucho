@@ -44,7 +44,7 @@ jobs:
         working-directory: ${{ env.OPENTOFU_WORKING_DIR }}
 
       - name: Plan
-        run: tofu plan -var-file=${{ env.OPENTOFU_ENVIRONMENT_FILE }} -out=${{ env.OPENTOFU_PLAN_FILE }}
+        run: tofu plan -var-file="${{ env.OPENTOFU_ENVIRONMENT_FILE }}" -out="${{ env.OPENTOFU_PLAN_FILE }}"
         working-directory: ${{ env.OPENTOFU_WORKING_DIR }}
 
   apply:
