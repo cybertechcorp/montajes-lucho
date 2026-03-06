@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <header className="nav">
       <div className="nav-container">
-        <Link to="/" className="logo">Montajes Lucho</Link>
+        <Link to="/" className="logo" style={{ color: 'white', textDecoration: 'none' }}>Montajes Lucho</Link>
         <nav className="menu">
           <Link to="/">Inicio</Link>
           <Link to="/servicios">Servicios</Link>
