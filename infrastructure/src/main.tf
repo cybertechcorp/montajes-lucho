@@ -3,7 +3,7 @@ resource "aws_s3_bucket" "frontend" {
   bucket = "frontend-montajes-lucho"
 }
 
-# Test bucket
+# Test bucket 
 resource "aws_s3_bucket" "testbucket" {
   bucket = "testbuckettestbucket"
 }
