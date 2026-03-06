@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "frontend" {
 
 # Test bucket 
 resource "aws_s3_bucket" "testbucket" {
-  bucket = "testbuckettestbucket"
+  bucket = "testbuckettestbucket-monmtajes-lucho"
 }
 
 # Block public access to the bucket
