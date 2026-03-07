@@ -1,0 +1,47 @@
+/* Contacto */
+.contact-page .contact-grid {
+  display: grid; gap: 24px; grid-template-columns: 1.1fr 1.4fr; align-items: start;
+}
+@media (max-width: 900px) {
+  .contact-page .contact-grid { grid-template-columns: 1fr; }
+}
+
+.contact-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px;
+}
+.contact-list { list-style: none; padding: 0; margin: 0 0 16px; }
+.contact-list li { margin: 10px 0; }
+.form.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; }
+.form .form-row { display: grid; gap: 6px; margin-bottom: 12px; }
+.form input, .form textarea {
+  border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; font-size: 1rem;
+}
+.form input:focus, .form textarea:focus { outline: 2px solid #2563eb33; border-color: #2563eb; }
+.ok { color: #16a34a; }
+.error { color: #dc2626; }
+.muted { color: #6b7280; }
+
+.map-section { margin-top: 22px; }
+.map-section img { width: 100%; border-radius: 12px; border: 1px solid #e5e7eb; }
+
+/* Encabezados de página */
+.page-header { 
+  max-width: 900px; 
+  margin: 0 auto 28px auto; 
+  text-align: center; 
+}
+.page-header h1{
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+
+
+}
+.page-header .lead { 
+  color: #ffffff; 
+}
+
+/* Botones */
+.button {
+  display: inline-block; background: #0a73d6; color: #fff; padding: 10px 18px;
+  border-radius: 8px; text-decoration: none; font-weight: 600;
+}

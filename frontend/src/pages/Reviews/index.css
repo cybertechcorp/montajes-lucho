@@ -1,0 +1,3 @@
+.reviews { margin-top: 38px; text-align: center; }
+.quotes { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 12px; }
+.quotes blockquote { background: #fff; border-left: 4px solid #2563eb; border-radius: 8px; padding: 14px; }
