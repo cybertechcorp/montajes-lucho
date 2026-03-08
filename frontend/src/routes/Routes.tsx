@@ -4,15 +4,16 @@ import Services from '../pages/Services'
 import Contact from '../pages/Contact'
 import Reviews from '../pages/Reviews'
 import Layout from '../components/Layout'
-import ProtectedRoute from './ProtectedRoute'
+// import ProtectedRoute from './ProtectedRoute'
 
 export const Routes = [
 	{
 		path: '/',
 		element: (
-			<ProtectedRoute>
-				<Layout />
-			</ProtectedRoute>
+			<Layout />
+			// <ProtectedRoute>
+			// <Layout />
+			// </ProtectedRoute>
 		),
 		errorElement: <Error />,
 		children: [
