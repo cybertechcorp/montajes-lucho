@@ -32,7 +32,7 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm ci # Use npm ci for clean install in CI environments instead of npm install
+        run: npm install # npm ci # Use npm ci for clean install in CI environments instead of npm install
         working-directory: ./frontend
 
       - name: Build React application
