@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useState, type ChangeEvent, type SubmitEvent } from "react";
 import "./index.css";
 
 export default function Contact() {
   const [form, setForm] = useState({ nombre: "", telefono: "", email: "", mensaje: "" });
-  const [status, setStatus] = useState({ sending: false, ok: null, error: "" });
+  const [status, setStatus] = useState<{
+    sending: boolean
+    ok: boolean | null
+    error: string
+  }>({
+    sending: false,
+    ok: null,
+    error: ""
+  });
 
-  const handleChange = (e) => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus({ sending: true, ok: null, error: "" });
     try {
@@ -15,7 +24,7 @@ export default function Contact() {
       await new Promise(res => setTimeout(res, 900));
       setStatus({ sending: false, ok: true, error: "" });
       setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
-    } catch (err) {
+    } catch {
       setStatus({ sending: false, ok: false, error: "No se pudo enviar. Inténtalo de nuevo." });
     }
   };

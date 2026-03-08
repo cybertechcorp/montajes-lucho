@@ -1,4 +1,4 @@
-export default function FeatureIcon({ icon = "✅", title, desc }) {
+export default function FeatureIcon({ icon = "✅", title, desc }: { icon?: string; title: string; desc: string }) {
   return (
     <div className="feature-icon">
       <div className="feature-emoji">{icon}</div>

@@ -1,7 +1,0 @@
-/* FAQ */
-.faq { border-bottom: 1px solid #e5e7eb; }
-.faq-q {
-  width: 100%; text-align: left; background: none; border: none;
-  padding: 12px 0; font-weight: 700; display: flex; justify-content: space-between; cursor: pointer;
-}
-.faq-a { padding: 0 0 12px; color: #475569; }

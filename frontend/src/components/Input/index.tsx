@@ -1,12 +1,18 @@
+import type { ChangeEventHandler, MouseEventHandler } from 'react'
 import styles from './index.module.css'
 
-export default function Input({ onChange = () => {}, onClick = () => {} }) {
-	return (
-		<input
-			type='password'
-			placeholder=''
-			onClick={onClick()}
-			className={styles.input}
-		></input>
-	)
+type Props = {
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  onClick?: MouseEventHandler<HTMLInputElement>
+}
+
+export default function Input({ onChange, onClick }: Props) {
+  return (
+    <input
+      type="password"
+      className={styles.input}
+      onClick={onClick}
+      onChange={onChange}
+    />
+  )
 }
