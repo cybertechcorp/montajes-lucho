@@ -1,5 +1,6 @@
-import { useState, type ChangeEvent, type SubmitEvent } from "react";
+import { useState, type ChangeEvent, type FormEvent } from "react";
 import "./index.css";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const [form, setForm] = useState({ nombre: "", telefono: "", email: "", mensaje: "" });
@@ -16,22 +17,35 @@ export default function Contact() {
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(f => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setStatus({ sending: true, ok: null, error: "" });
-    try {
-      // 👉 Aquí puedes integrar EmailJS o tu API. Por ahora simulamos el envío.
-      await new Promise(res => setTimeout(res, 900));
-      setStatus({ sending: false, ok: true, error: "" });
-      setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
-    } catch {
-      setStatus({ sending: false, ok: false, error: "No se pudo enviar. Inténtalo de nuevo." });
-    }
-  };
+const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setStatus({ sending: true, ok: null, error: "" });
+  try {
+    await emailjs.send("service_3x61feq","template_fuhftay",
+      {
+        nombre: form.nombre,
+        telefono: form.telefono,
+        email: form.email,
+        mensaje: form.mensaje,
+      },
+      "l75H06RHW9MrQLZXl"
+    );
 
-  const phone = "34XXXXXXXXX"; // <-- PON EL NÚMERO REAL
-  const telHref = 'tel:+${phone}';
-  const waHref = 'https://wa.me/${phone}';
+    setStatus({ sending: false, ok: true, error: "" });
+    setForm({ nombre: "", telefono: "", email: "", mensaje: "" });
+  } catch (err) {
+    console.error(err);
+    setStatus({
+      sending: false,
+      ok: false,
+      error: "No se pudo enviar. Inténtalo de nuevo.",
+    });
+  }
+};
+
+  const phone = "34611902018"; // <-- PON EL NÚMERO REAL
+  const telHref = `tel:+${phone}`;
+  const waHref = `https://wa.me/${phone}?text=${encodeURIComponent("Hola, te escribo desde la web de montajes. Me gustaría solicitar información.")}`;
 
   return (
     <article className="section contact-page">
@@ -47,7 +61,7 @@ export default function Contact() {
           <ul className="contact-list">
             <li><strong>Teléfono:</strong> <a href={telHref}>+{phone}</a></li>
             <li><strong>WhatsApp:</strong> <a href={waHref} target="_blank" rel="noopener noreferrer">Escríbeme</a></li>
-            <li><strong>Email:</strong> <a href="mailto:contacto@lucho.com">contacto@lucho.com</a></li>
+            <li><strong>Email:</strong> <a href="mailto:contacto@lucho.com">jordancueva2001@gmail.com</a></li>
             <li><strong>Zona:</strong> Madrid y alrededores</li>
             <li><strong>Horario:</strong> Lun–Vie 9:00–20:00 (Urgencias según disponibilidad)</li>
           </ul>
@@ -93,11 +107,6 @@ export default function Contact() {
         </section>
       </div>
 
-      {/* Mapa estático opcional (sustituye la imagen por una propia si quieres) */}
-      <section className="map-section">
-        <img src="/mapa-madrid.jpg" alt="Área de servicio: Madrid y alrededores" />
-      </section>
-
       {/* SEO Local con JSON-LD */}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
         "@context": "https://schema.org",
@@ -115,3 +124,4 @@ export default function Contact() {
     </article>
   );
 }
+

@@ -10,6 +10,7 @@ export default function Services() {
 
       {/* Bloques por categorías */}
       <section className="service-groups">
+
         <div className="service-card">
           <h2>Montaje de muebles</h2>
           <img 
@@ -33,7 +34,7 @@ export default function Services() {
           <h2>Estanterías</h2>
           <img 
             src="/img/estanterias.jpeg"
-            alt="Montaje de muebles"
+            alt="Montaje de estanterías"
             className="service-img"
           />
           <p>
@@ -50,7 +51,7 @@ export default function Services() {
           <h2>Lámparas y ventiladores</h2>
           <img 
             src="/img/lamparas.jpeg"
-            alt="Montaje de muebles"
+            alt="Instalación de lámparas"
             className="service-img"
           />
           <p>
@@ -62,14 +63,16 @@ export default function Services() {
             <li>Montaje y equilibrado de ventiladores</li>
             <li>Comprobación de funcionamiento</li>
           </ul>
-          <small className="note">*Para trabajos eléctricos complejos se coordina electricista homologado.</small>
+          <small className="note">
+            *Para trabajos eléctricos complejos se coordina electricista homologado.
+          </small>
         </div>
 
         <div className="service-card">
           <h2>Cocinas</h2>
           <img 
             src="/img/cocina.jpeg"
-            alt="Montaje de muebles"
+            alt="Montaje de cocina"
             className="service-img"
           />
           <p>
@@ -88,40 +91,63 @@ export default function Services() {
       {/* Cómo trabajamos */}
       <section className="how-we-work">
         <h2>Cómo trabajamos</h2>
+
         <div className="steps">
           <div className="step">
             <span className="step-num">1</span>
             <h3>Consulta</h3>
-            <p>Nos cuentas qué necesitas (fotos/medidas ayudan) y te damos un presupuesto claro.</p>
+            <p>
+              Nos cuentas qué necesitas (fotos/medidas ayudan) y te damos un presupuesto claro.
+            </p>
           </div>
+
           <div className="step">
             <span className="step-num">2</span>
             <h3>Planificación</h3>
-            <p>Fijamos fecha y preparamos herramientas, fijaciones y protección adecuadas.</p>
+            <p>
+              Fijamos fecha y preparamos herramientas, fijaciones y protección adecuadas.
+            </p>
           </div>
+
           <div className="step">
-            <span className="step-num">3</span>
-            <h3>Ejecución</h3>
-            <p>Montaje y/o transporte con cuidado, limpieza de zona y revisión final contigo.</p>
+            <span className="step-num">3</span> <h3>Ejecución</h3>
+            <p>
+              Montaje y/o transporte con cuidado, limpieza de zona y revisión final contigo.
+            </p>
           </div>
         </div>
 
         <div className="features">
-          <FeatureIcon icon="🛠️" title="Materiales incluidos"
-            desc="Tacos/torillos habituales, mantas y cinchas de sujeción." />
-          <FeatureIcon icon="⏱️" title="Puntualidad"
-            desc="Horario pactado y comunicación transparente si surge algún imprevisto." />
-          <FeatureIcon icon="🧼" title="Cuidado y limpieza"
-            desc="Protección de superficies y retirada básica de embalajes." />
-          <FeatureIcon icon="🔒" title="Seguridad"
-            desc="Trabajo seguro y fijaciones adecuadas al tipo de pared y peso." />
+          <FeatureIcon
+            icon="🛠️"
+            title="Materiales incluidos"
+            desc="Tacos/tornillos habituales, mantas y cinchas de sujeción."
+          />
+          <FeatureIcon
+            icon="⏱️"
+            title="Puntualidad"
+            desc="Horario pactado y comunicación transparente si surge algún imprevisto."
+          />
+          <FeatureIcon
+            icon="🧼"
+            title="Cuidado y limpieza"
+            desc="Protección de superficies y retirada básica de embalajes."
+          />
+          <FeatureIcon
+            icon="🔒"
+            title="Seguridad"
+            desc="Trabajo seguro y fijaciones adecuadas al tipo de pared y peso."
+          />
         </div>
       </section>
+
       {/* CTA */}
       <section className="cta">
         <h3>¿Empezamos?</h3>
         <p>Cuéntanos tu proyecto y te enviamos presupuesto sin compromiso.</p>
-        <a className="button" href="/contact">Solicitar presupuesto</a>
+        <a className="button" href="/contact">
+          Solicitar presupuesto
+        </a>
       </section>
     </article>
   );

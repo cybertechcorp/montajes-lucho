@@ -1,47 +1,217 @@
 /* Contacto */
+/* Fuerza un fondo blanco general */
+body {
+  background: #f4f6f8;
+  color: #1e293b;
+  font-family: system-ui, sans-serif;
+}
 .contact-page .contact-grid {
-  display: grid; gap: 24px; grid-template-columns: 1.1fr 1.4fr; align-items: start;
+  display: grid; 
+  gap: 24px; 
+  grid-template-columns: 1.1fr 1.4fr; 
+  align-items: start;
 }
 @media (max-width: 900px) {
-  .contact-page .contact-grid { grid-template-columns: 1fr; }
+  .contact-page .contact-grid { 
+    grid-template-columns: 1fr; 
+  }
 }
 
-.contact-card {
-  background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px;
+.contact-card, 
+.form.card {
+  background: #ffffff; 
+  border: 1px solid #e2e8f0; 
+  border-radius: 14px; 
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0,06);
 }
-.contact-list { list-style: none; padding: 0; margin: 0 0 16px; }
-.contact-list li { margin: 10px 0; }
+.contact-list { 
+  list-style: none; 
+  padding: 0; 
+  margin: 0 0 18px; 
+}
+.contact-list li { 
+  margin: 10px 0;
+  line-height: 1.4;
+ }
 .form.card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 16px; }
-.form .form-row { display: grid; gap: 6px; margin-bottom: 12px; }
-.form input, .form textarea {
-  border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; font-size: 1rem;
+.form .form-row { 
+  display: grid; 
+  gap: 6px; 
+  margin-bottom: 14px; }
+.form input, 
+.form textarea {
+  border: 1px solid #cbd5e1; 
+  border-radius: 8px; 
+  padding: 10px; 
+  font-size: 1rem;
+  background: #ffffff;
+  color: #1e293b;
 }
-.form input:focus, .form textarea:focus { outline: 2px solid #2563eb33; border-color: #2563eb; }
-.ok { color: #16a34a; }
-.error { color: #dc2626; }
-.muted { color: #6b7280; }
+.form input:focus, .form textarea:focus { 
+  outline: 2px solid #0a73d650; 
+  border-color: #0a73d6; 
+}
+.ok { color: #16a34a; margin-top: 6px; }
+.error { color: #dc2626; margin-top: 6px; }
+.muted { color: #6b7280; font-size: 0.85rem; }
 
-.map-section { margin-top: 22px; }
-.map-section img { width: 100%; border-radius: 12px; border: 1px solid #e5e7eb; }
+.map-section { margin-top: 26px; }
+.map-section img { 
+  width: 100%; 
+  border-radius: 12px; 
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0,06);
+}
 
 /* Encabezados de página */
 .page-header { 
   max-width: 900px; 
-  margin: 0 auto 28px auto; 
+  margin: 0 auto 30px auto; 
   text-align: center; 
 }
 .page-header h1{
-  margin-top: 0 !important;
-  padding-top: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
 
 
 }
 .page-header .lead { 
-  color: #ffffff; 
+  color: #475569; 
 }
 
 /* Botones */
 .button {
-  display: inline-block; background: #0a73d6; color: #fff; padding: 10px 18px;
-  border-radius: 8px; text-decoration: none; font-weight: 600;
+  display: inline-block; 
+  background: #0a73d6; 
+  color: #fff; 
+  padding: 10px 18px;
+  border-radius: 8px; 
+  text-decoration: none; 
+  font-weight: 600;
+}
+
+
+/* ====== RESETEO LOCAL Y PALETA PARA LA PÁGINA DE CONTACTO ====== */
+
+/* Fondo claro y tipografía legible en toda la sección */
+.contact-page {
+  background: #f4f6f8;          /* gris muy claro */
+  color: #0f172a;               /* azul muy oscuro (casi negro) */
+  padding-top: 12px;
+  padding-bottom: 28px;
+}
+
+/* Evita herencias no deseadas de temas oscuros o estilos globales */
+.contact-page, 
+.contact-page * {
+  color: inherit;
+}
+
+/* Encabezado */
+.contact-page .page-header h1 {
+  color: #0f172a;
+}
+
+.contact-page .page-header .lead {
+  color: #475569;               /* gris medio, buena legibilidad */
+}
+
+/* Tarjetas (aside y formulario) */
+.contact-page .contact-card,
+.contact-page .form.card {
+  background: #ffffff;
+  color: #0f172a;               /* fuerza texto oscuro dentro */
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* MUY IMPORTANTE: forzamos que TODO el contenido textual interno sea oscuro,
+   por si algún estilo global pone color blanco */
+.contact-page .contact-card * ,
+.contact-page .form.card * {
+  color: #0f172a;
+}
+
+/* Enlaces dentro de las tarjetas: azules y con hover */
+.contact-page .contact-card a,
+.contact-page .form.card a {
+  color: #0a73d6;
+  text-decoration: none;
+}
+
+.contact-page .contact-card a:hover,
+.contact-page .form.card a:hover {
+  text-decoration: underline;
+}
+
+/* Etiquetas y campos de formulario */
+.contact-page .form .form-row label {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.contact-page .form input,
+.contact-page .form textarea {
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+}
+
+.contact-page .form input::placeholder,
+.contact-page .form textarea::placeholder {
+  color: #94a3b8;
+}
+
+.contact-page .form input:focus,
+.contact-page .form textarea:focus {
+  outline: 2px solid #0a73d650;
+  border-color: #0a73d6;
+}
+
+/* Botón principal */
+.contact-page .button {
+  display: inline-block;
+  background: #0a73d6;
+  color: #ffffff !important;   /* asegura contraste correcto */
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background .2s ease;
+  border: 0;
+}
+
+.contact-page .button:hover {
+  background: #095eb1;
+}
+
+/* Mensajes estado */
+.contact-page .ok   { color: #16a34a; }
+.contact-page .error{ color: #dc2626; }
+.contact-page .muted{ color: #6b7280; }
+
+/* Grid y mapa (tal como tenías, con pequeños ajustes) */
+.contact-page .contact-grid {
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1.1fr 1.4fr;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .contact-page .contact-grid { grid-template-columns: 1fr; }
+}
+
+.contact-page .map-section { margin-top: 26px; }
+.contact-page .map-section img {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
