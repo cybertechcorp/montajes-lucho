@@ -43,9 +43,8 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
   }
 };
 
-  const phone = "34611902018"; // <-- PON EL NÚMERO REAL
-  const telHref = `tel:+${phone}`;
-  const waHref = `https://wa.me/${phone}?text=${encodeURIComponent("Hola, te escribo desde la web de montajes. Me gustaría solicitar información.")}`;
+  const telHref = `tel:+${import.meta.env.VITE_PROVIDER_PHONE}`;
+  const waHref = `https://wa.me/${import.meta.env.VITE_PROVIDER_PHONE}?text=${encodeURIComponent("Hola, te escribo desde la web de montajes. Me gustaría solicitar información.")}`;
 
   return (
     <article className="section contact-page">
@@ -59,9 +58,9 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         <aside className="contact-card">
           <h2>Datos directos</h2>
           <ul className="contact-list">
-            <li><strong>Teléfono:</strong> <a href={telHref}>+{phone}</a></li>
+            <li><strong>Teléfono:</strong> <a href={telHref}>+{import.meta.env.VITE_PROVIDER_PHONE}</a></li>
             <li><strong>WhatsApp:</strong> <a href={waHref} target="_blank" rel="noopener noreferrer">Escríbeme</a></li>
-            <li><strong>Email:</strong> <a href="mailto:contacto@lucho.com">jordancueva2001@gmail.com</a></li>
+            <li><strong>Email:</strong> <a href={`mailto:${import.meta.env.VITE_PROVIDER_EMAIL}`}>{import.meta.env.VITE_PROVIDER_EMAIL}</a></li>
             <li><strong>Zona:</strong> Madrid y alrededores</li>
             <li><strong>Horario:</strong> Lun–Vie 9:00–20:00 (Urgencias según disponibilidad)</li>
           </ul>
@@ -114,11 +113,11 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         "name": "Montajes y Transportes Lucho",
         "image": "/og-image.jpg",
         "areaServed": "Madrid",
-        "telephone": '+${phone}',
+        "telephone": '+${import.meta.env.VITE_PROVIDER_PHONE}',
         "url": "https://tudominio.com",
         "priceRange": "€€",
         "sameAs": [
-          "https://wa.me/" + phone
+          "https://wa.me/" + import.meta.env.VITE_PROVIDER_PHONE
         ]
       }) }} />
     </article>
