@@ -7,7 +7,7 @@ body {
 
 .contact-page .contact-grid {
   display: grid; 
-  gap: 24px; 
+  gap: 10px; 
   grid-template-columns: 1.1fr 1.4fr; 
   align-items: start;
 }
@@ -24,6 +24,8 @@ body {
   border-radius: 14px; 
   padding: 20px;
   box-shadow: 0 2px 6px rgba(0,0,0,0,06);
+  margin-left: 10px;
+  margin-right: 20px;
 }
 .contact-list { 
   list-style: none; 
@@ -54,7 +56,7 @@ body {
 }
 .ok { color: #16a34a; margin-top: 6px; }
 .error { color: #dc2626; margin-top: 6px; }
-.muted { color: #6b7280; font-size: 0.85rem; }
+.muted { color: #6b7280; font-size: 0.85rem; margin-left: 10px; }
 
 .map-section { margin-top: 26px; }
 .map-section img { 
@@ -100,6 +102,8 @@ body {
   color: #0f172a;               /* azul muy oscuro (casi negro) */
   padding-top: 12px;
   padding-bottom: 28px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 /* Evita herencias no deseadas de temas oscuros o estilos globales */
@@ -199,7 +203,7 @@ body {
 /* Grid y mapa (tal como tenías, con pequeños ajustes) */
 .contact-page .contact-grid {
   display: grid;
-  gap: 24px;
+  gap: 10px;
   grid-template-columns: 1.1fr 1.4fr;
   align-items: start;
 }

@@ -72,8 +72,10 @@ const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 
         {/* Formulario */}
         <section className="contact-form">
-          <h2>Envíame un mensaje</h2>
+          
           <form onSubmit={handleSubmit} className="card form">
+            <h1>Envíame un mensaje:</h1>
+            <br />
             <div className="form-row">
               <label htmlFor="nombre">Nombre</label>
               <input id="nombre" name="nombre" value={form.nombre} onChange={handleChange} required />
