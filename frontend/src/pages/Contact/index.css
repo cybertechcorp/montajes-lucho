@@ -3,8 +3,8 @@
 body {
   background: #f4f6f8;
   color: #1e293b;
-  font-family: system-ui, sans-serif;
 }
+
 .contact-page .contact-grid {
   display: grid; 
   gap: 24px; 
