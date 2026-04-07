@@ -8,7 +8,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <section className="hero">
         <div className="hero-content">
-          <h1>Montaje profesional para tu hogar</h1>
+          <h1 className="hero-title">Montaje profesional para tu hogar</h1>
           <p className="subtitle">
             Especialistas en montaje de muebles, instalación de lámparas, ventiladores y 
             cocinas.
